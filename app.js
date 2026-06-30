@@ -13,9 +13,7 @@ const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
 const sessions = {};
 const ACCESS_TOKEN = process.env.WHATSAPP_TOKEN;
 const PHONE_NUMBER_ID
-/*****************************************************************
- * WhatsApp Cloud API Helper
- *****************************************************************/
+
 async function sendWhatsAppMessage(payload) {
 
     try {
@@ -47,9 +45,6 @@ async function sendWhatsAppMessage(payload) {
 
 }
 
-/*****************************************************************
- * Send Text Message
- *****************************************************************/
 async function sendTextMessage(to, message) {
 
     const payload = {
@@ -76,9 +71,6 @@ async function sendTextMessage(to, message) {
 
 }
 
-/*****************************************************************
- * Welcome + Language Menu
- *****************************************************************/
 async function sendLanguageMenu(to) {
 
     const payload = {
@@ -154,9 +146,7 @@ Please select your preferred language.`
 
 }
 
-/*****************************************************************
- * Main Menu (English)
- *****************************************************************/
+
 async function sendEnglishMainMenu(to) {
 
     const payload = {
@@ -244,9 +234,7 @@ How can we help you today?`
 
 }
 
-/*****************************************************************
- * Main Menu (Malayalam)
- *****************************************************************/
+
 async function sendMalayalamMainMenu(to) {
 
     const payload = {
@@ -333,9 +321,7 @@ async function sendMalayalamMainMenu(to) {
     await sendWhatsAppMessage(payload);
 
 }
-/*****************************************************************
- * Webhook Verification (GET)
- *****************************************************************/
+
 app.get("/", (req, res) => {
 
     const mode = req.query["hub.mode"];
@@ -355,9 +341,7 @@ app.get("/", (req, res) => {
 });
 
 
-/*****************************************************************
- * Incoming WhatsApp Webhook (POST)
- *****************************************************************/
+
 app.post("/", async (req, res) => {
 
     const timestamp = new Date().toISOString();
@@ -385,9 +369,7 @@ app.post("/", async (req, res) => {
 
         console.log("Phone :", phone);
 
-        //---------------------------------------------------
-        // Create Session if New User
-        //---------------------------------------------------
+
 
         if (!sessions[phone]) {
 
@@ -551,10 +533,6 @@ app.post("/", async (req, res) => {
 
 });
 
-
-/*****************************************************************
- * Start Server
- *****************************************************************/
 app.listen(PORT, () => {
 
     console.log("====================================");
