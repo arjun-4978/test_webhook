@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
 const sessions = {};
 const ACCESS_TOKEN = process.env.WHATSAPP_TOKEN;
-const PHONE_NUMBER_ID
+const PHONE_NUMBER_ID=process.env.PHONE_NUMBER_ID;
 
 async function sendWhatsAppMessage(payload) {
 
